@@ -11,7 +11,6 @@ export default function Home() {
     dispatch(loadPosts());
   });
 
-  console.log(state);
   return (
     <div>
       <h1>Hello, World!</h1>
