@@ -21,12 +21,16 @@ export const GlobalStyles = createGlobalStyle<Theme>`
 
   h1, h2, h3, h4, h5, h6 {
     font-family: ${({ theme }) => theme.font.family.default};
-    margin: ${({ theme }) => theme.spacings.large} 0;
     color: ${({ theme }) => theme.colors.primaryColor};
+  }
+  h1 {
+    font-size: ${({ theme }) => theme.font.sizes.large};
+    font-weight: 700;
   }
 
   p {
-    margin: ${({ theme }) => theme.spacings.medium} 0;
+    margin: ${({ theme }) => theme.spacings.medium} 0 ${({ theme }) =>
+  theme.spacings.small} 0;
     font-size: 1.125em;
     color: ${({ theme }) => theme.colors.primaryColor};
   }
@@ -47,28 +51,30 @@ export const GlobalStyles = createGlobalStyle<Theme>`
     width: 111px;
     color: ${({ theme }) => theme.colors.white};
     cursor: pointer;
-    background: ${({ theme }) => theme.colors.primary};
-    border: 2px solid ${({ theme }) => theme.colors.primary};
-    padding: 15px 30px;
+    background: ${({ theme }) => theme.colors.primaryColor};
+    border: 2px solid ${({ theme }) => theme.colors.primaryColor};
+    padding: 5px 20px;
     font-size: ${({ theme }) => theme.font.sizes.small};
     transition: all, 0.3s;
   }
   button:hover {
-    border-color: ${({ theme }) => theme.colors.white};
+    border-color: ${({ theme }) => theme.colors.secondaryColor};
   }
 
   button:disabled {
       background: ${({ theme }) => theme.colors.mediumGray};
+      border: 2px solid transparent;
       cursor: not-allowed;
     }
 
   input[type='text']/*,[type='search']*/ {
       font-size: ${({ theme }) => theme.font.sizes.large};
       width: 100%;
-      border-radius: 5px;
+      max-width: 445px;
       padding: 5px 10px;
+      border-radius: 4px;
       &::placeholder {
-        font-size: 1em;
+        font-size: ${({ theme }) => theme.font.sizes.xsmall};
       }
   }
   /* .pressable {
@@ -81,6 +87,9 @@ export const GlobalStyles = createGlobalStyle<Theme>`
   .pressable:hover {
     color: ${({ theme }) => theme.colors.secondaryColor};
   } */
+  form {
+    width: 100%;
+  }
   .icon-pressable {
     cursor: pointer;
     color: ${({ theme }) => theme.colors.primaryColor};

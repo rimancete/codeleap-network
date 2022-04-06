@@ -5,16 +5,17 @@ export const theme = {
     white: '#FFFFFF',
     mediumGray: '#BBB',
     placeholder: '#ccc',
+    modalBackground: 'rgba(119, 119, 119, 0.8)',
   },
   font: {
     family: {
       default: "'Roboto', sans-serif",
     },
     sizes: {
-      xsmall: '0.875rem', // 14px
-      small: '1rem', // 16px
-      medium: '1.125rem', // 18px
-      large: '1.375rem', // 22px
+      xsmall: '0.875em', // 14px
+      small: '1em', // 16px
+      medium: '1.125em', // 18px
+      large: '1.375em', // 22px
     },
   },
   media: {
