@@ -35,13 +35,11 @@ export function CreatePost() {
     };
 
     addOrEditPost(data)
-      .then((res) => {
+      .then(() => {
         // show successfull post creation message
-        console.log('res', res);
         navigate(`${env.ROUTER_UTILS.base.posts}/${username}`);
       })
-      .catch((err) => {
-        console.log('err', err);
+      .catch(() => {
         // show fail to create post message
       });
   };
