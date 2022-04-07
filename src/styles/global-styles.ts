@@ -67,10 +67,20 @@ export const GlobalStyles = createGlobalStyle<Theme>`
       cursor: not-allowed;
     }
 
-  input[type='text']/*,[type='search']*/ {
+  input[type='text'] {
       font-size: ${({ theme }) => theme.font.sizes.large};
       width: 100%;
-      max-width: 445px;
+      padding: 5px 10px;
+      border-radius: 4px;
+      &::placeholder {
+        font-size: ${({ theme }) => theme.font.sizes.xsmall};
+      }
+  }
+  textarea {
+      border: 2px solid ${({ theme }) => theme.colors.primaryColor};
+      resize: none;
+      font-size: ${({ theme }) => theme.font.sizes.large};
+      width: 100%;
       padding: 5px 10px;
       border-radius: 4px;
       &::placeholder {

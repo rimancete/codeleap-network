@@ -44,17 +44,11 @@ export const LoginModalContentHeader = styled.div`
 export const LoginModalContentTitleText = styled.h1``;
 
 export const LoginModalContentBody = styled.div`
-  /* margin: 35px 0; */
   display: flex;
   width: 100%;
-  /* flex-direction: column;
-  justify-content: space-between; */
 `;
 export const LoginModalForm = styled.form``;
 
-export const LoginModalFormUsernameLabel = styled.p``;
-
-export const LoginModalFormUsernameInput = styled.input``;
 export const LoginModalFormButtonDiv = styled.div`
   width: 100%;
   display: flex;

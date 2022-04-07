@@ -6,6 +6,7 @@ export const theme = {
     mediumGray: '#BBB',
     placeholder: '#ccc',
     modalBackground: 'rgba(119, 119, 119, 0.8)',
+    cancel: '#AE3D01',
   },
   font: {
     family: {
