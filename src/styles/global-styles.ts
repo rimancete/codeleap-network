@@ -102,12 +102,12 @@ export const GlobalStyles = createGlobalStyle<Theme>`
   }
   .icon-pressable {
     cursor: pointer;
-    color: ${({ theme }) => theme.colors.primaryColor};
+    color: ${({ theme }) => theme.colors.white};
     text-decoration: none;
     border-color: transparent;
-    transition: all, 0.3s;
+    /* transition: all, 0.3s; */
   }
-  .icon-pressable:hover {
-    color: ${({ theme }) => theme.colors.secondaryColor};
-  }
+  /* .icon-pressable:hover {
+    transform: scale(1.4);
+  } */
 `;

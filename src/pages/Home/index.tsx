@@ -1,5 +1,6 @@
-import { LoginModal } from '../../components/LoginModal';
+import { Modal } from '../../components/Modal';
+import { modalTypeEnum } from '../../utils/enum';
 
 export default function Home() {
-  return <LoginModal />;
+  return <Modal type={modalTypeEnum.LOGIN} />;
 }

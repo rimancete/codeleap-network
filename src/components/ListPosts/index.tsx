@@ -13,7 +13,6 @@ export function ListPosts() {
     dispatch(loadPosts());
   });
 
-  console.log('state', state);
   return (
     <PostsContainer>
       {state.posts.value.map((post, index) => (

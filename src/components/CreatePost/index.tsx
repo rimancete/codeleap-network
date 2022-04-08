@@ -11,9 +11,8 @@ import {
 } from './styles';
 
 import { addOrEditPost } from '../../actions/axios';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { PostDataType } from '../../interfaces';
-import { env } from '../../environments';
 import { toIsoString } from '../../utils/getDateTimeIso';
 
 export function CreatePost() {
@@ -22,8 +21,6 @@ export function CreatePost() {
 
   const params = useParams();
   const username = params.username;
-
-  const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -37,7 +34,7 @@ export function CreatePost() {
     addOrEditPost(data)
       .then(() => {
         // show successfull post creation message
-        navigate(`${env.ROUTER_UTILS.base.posts}/${username}`);
+        window.location.reload();
       })
       .catch(() => {
         // show fail to create post message

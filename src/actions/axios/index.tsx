@@ -2,8 +2,6 @@ import axios from 'axios';
 import { env } from '../../environments';
 import { PostDataType } from '../../interfaces';
 
-// const baseUrl = 'https://dev.codeleap.co.uk/careers/';
-
 export async function getPosts(): Promise<PostDataType[]> {
   const response = await axios.get(env.baseUrl);
   return response.data.results;

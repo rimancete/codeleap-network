@@ -5,6 +5,7 @@ interface LoginModalContentProps {
 }
 
 export const LoginModalContainer = styled.div`
+  z-index: 9999;
   display: flex;
   .modal-visible.modal-hide {
     display: none;
@@ -22,6 +23,11 @@ export const LoginModalBackground = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  z-index: 9999;
+  .modal-visible.modal-hide {
+    display: none;
+  }
 `;
 
 export const LoginModalContent = styled.div<LoginModalContentProps>`
@@ -39,6 +45,7 @@ export const LoginModalContent = styled.div<LoginModalContentProps>`
 export const LoginModalContentHeader = styled.div`
   display: flex;
   align-items: left;
+  margin-bottom: ${({ theme }) => theme.spacings.small};
 `;
 
 export const LoginModalContentTitleText = styled.h1``;
@@ -56,3 +63,5 @@ export const LoginModalFormButtonDiv = styled.div`
   margin-top: ${({ theme }) => theme.spacings.small};
 `;
 export const LoginModalFormConfirmButton = styled.button``;
+export const LoginModalContentBodyDeleteConfirm = styled.div``;
+export const LoginModalContentBodyDeleteConfirmText = styled.p``;

@@ -5,7 +5,7 @@ interface PostContentProps {
 }
 
 export const PostContent = styled.div<PostContentProps>`
-  margin: ${({ theme }) => theme.spacings.medium};
+  margin: ${({ theme }) => theme.spacings.large};
   padding: ${({ theme }) => theme.spacings.medium};
   border: 2px solid ${({ theme }) => theme.colors.placeholder};
   max-width: ${(p) => (p.width < 768 ? '' : '723px')};
