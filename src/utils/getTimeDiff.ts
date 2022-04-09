@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export const getTimeDiff = (currentDate: any, postDate: any) => {
   const diff = currentDate - postDate;
   const unitmapping = {
