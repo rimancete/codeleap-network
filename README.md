@@ -1,54 +1,54 @@
-## Instruções
 
-1. Faça um fork do repositório na sua conta do GitHub
-2. Crie uma branch, preferencialmente utilizando as práticas do conventional commits
-3. Depois de concluir o desafio, abra um pull-request contra a main (do seu fork) com a descrição do que foi feito, como foi feito e como testar a nova funcionalidade
-4. Envie um email para [front-end@letrus.com.br](mailto:front-end@letrus.com.br?subject=Desafio%20Letrus) com objeto "Desafio Letrus" e no corpo do e-mail o link para acessarmos o pull-request no seu fork
-5. Ao receber o e-mail, faremos a avaliação da solução e entraremos em contato
+# Books
 
-## Requisitos
+Este projeto lista posts, e permite a exclusão e edição de posts (do usuário logado)
 
-- React
-- TypeScript
-- Componentes funcionais
-- React Router
-- Hooks
-- Redux Toolkit
-- Consumo da seguinte API RESTful: https://rickandmortyapi.com/api/character
-- Listagem dos dados em uma nova rota
+## Screenshots
 
-## Diferenciais
+### Browser Perspectiva:
+![nav](./docs/browser.gif)
 
-- Testes (unitários, de integração, E2E)
-- Jest, React Testing Library
-- TDD
+### Mobile Perspectiva:
+![nav](./docs/mobile.gif)
 
-## O que é permitido
+## Bibliotecas utilizadas
 
-- SCSS
-- Linters
-- Formatadores
-- Bibliotecas de memoize, como o Reselect
-- Bibliotecas HTTP, como o Axios
-- Utilização de IDEs ou editores de texto de sua preferência, como o VS Code
+- styled-components - Estilização (CSS)
+- axios - Manipulação de dados das APIs
+- react-icons - Para ícones
+- react-router-dom - Rotas e navegação entre páginas
+- eslint / prettier - Linter e formatação de código
+- react-hot-toast - Feedback de usuário
 
-## O que não é permitido
+# Instalando e rodando o projeto
 
-- Frameworks adicionais, como Bootstrap, Chakra UI, Materialize, etc
-- Bibliotecas que em geral abstraiam os principais conceitos utilizados
-- Reutilização de códigos de outras pessoas
+```
+ npm i
+```
 
-## Como rodar o projeto
+```
+ npm start
+```
+## Construído com
 
-1. Ter o Node.js instalado (versão 14.1.0+)
-2. Criar o fork do projeto
-3. Rodar `npm install`
-4. Rodar `npm start`
+- [ReactJS](https://pt-br.reactjs.org/) - Biblioteca Front-end.
+- [Codeleap posts API](http://dev.codeleap.co.uk/careers/) - API para consumo dos dados.
 
-## A feature a ser desenvolvida
+## Autor
 
-- Implemente um novo reducer na store do Redux, o qual será responsável por armazenar o estado da resposta do **GET** no endpoint `/character` da API
+- **Osvaldo Costa** - [rimancete](https://github.com/rimancete)
 
-- Crie um seletor que retorne o estado armazenado
+## Melhorias propostas
 
-- Consuma esse estado dentro de um página cuja rota tenha o nome de `/personagens`, e, para cada personagem, exiba seu nome, gênero, status, foto, e suas cinco primeiras aparições, de acordo com o protótipo do [Figma](https://www.figma.com/file/OlZtpmS4v7IgTTq93XJpyX/Untitled?node-id=6%3A154)
+Técnica
+- Implementação de react-query
+- Aplicação de UI(ex: Chakra, Material-UI ou similares) no lugar de styled-components
+
+Layout
+- Header acompanhando o scroll
+
+Funcionalidade
+- Após feedback, inabilitar campos e botões
+
+Bug
+- Em alguns momentos após fechar o modal e tentar acioná-lo por alguma opção, ele não reabre. Necessitando atualizar a página para que volte ao normal

@@ -34,18 +34,6 @@ export const GlobalStyles = createGlobalStyle<Theme>`
     font-size: 1.125em;
     color: ${({ theme }) => theme.colors.primaryColor};
   }
-  /* a {
-    color: ${({ theme }) => theme.colors.primaryColor};
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: all, 0.3s;
-    text-decoration: none;
-    margin: 10px;
-  }
-  a:hover {
-    color: ${({ theme }) => theme.colors.secondaryColor};
-  } */
 
   button {
     width: 111px;
@@ -87,16 +75,6 @@ export const GlobalStyles = createGlobalStyle<Theme>`
         font-size: ${({ theme }) => theme.font.sizes.xsmall};
       }
   }
-  /* .pressable {
-    cursor: pointer;
-    color: ${({ theme }) => theme.colors.primaryColor};
-    text-decoration: none;
-    border-color: transparent;
-    transition: all, 0.3s;
-  }
-  .pressable:hover {
-    color: ${({ theme }) => theme.colors.secondaryColor};
-  } */
   form {
     width: 100%;
   }
@@ -105,11 +83,11 @@ export const GlobalStyles = createGlobalStyle<Theme>`
     color: ${({ theme }) => theme.colors.white};
     text-decoration: none;
     border-color: transparent;
-    /* transition: all, 0.3s; */
+    transition: all, 0.3s;
   }
-  /* .icon-pressable:hover {
+  .icon-pressable:hover {
     transform: scale(1.4);
-  } */
+  }
 
   .page-selector {
     cursor: pointer;
@@ -120,8 +98,6 @@ export const GlobalStyles = createGlobalStyle<Theme>`
 
   .page-selector--disabled {
     color: ${({ theme }) => theme.colors.secondaryColor};
-    /* border-radius: 50%; */
-    /* border: 2px solid ${({ theme }) => theme.colors.lightGray}; */
     cursor: not-allowed;
   }
 

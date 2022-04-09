@@ -47,7 +47,7 @@ export function Modal({ type, post }: ModalProps) {
   };
 
   const handleClose = async () => {
-    document.querySelector('.modal-visible')?.classList.add('modal-hide');
+    document.querySelector('.modal-visible')?.remove();
   };
 
   const handleEditPost = async (e: React.FormEvent) => {
@@ -66,6 +66,7 @@ export function Modal({ type, post }: ModalProps) {
           setTimeout(() => window.location.reload(), timer().success);
         })
         .catch(() => {
+          handleClose();
           toast.error(`Update Post failed`, {
             duration: timer().error,
           });
@@ -85,19 +86,13 @@ export function Modal({ type, post }: ModalProps) {
           setTimeout(() => window.location.reload(), timer().success);
         })
         .catch(() => {
+          handleClose();
           toast.error(`Delete Post failed`, {
             duration: timer().error,
           });
           setTimeout(() => window.location.reload(), timer().error);
         });
   };
-
-  useEffect(() => {
-    document.querySelector('.modal-visible')?.classList.remove('modal-hide');
-    return () => {
-      document.querySelector('.modal-visible')?.classList.add('modal-hide');
-    };
-  }, []);
 
   useEffect(() => {
     if (type !== modalTypeEnum.LOGIN && post) {
