@@ -20,7 +20,7 @@ export function Header() {
       <UserDataContent>
         <UserDataContentGreetings>
           <UserDataContentGreetingsText>
-            {'Hello '} {`@${username} !`}
+            {'Hello '} {`@${username}!`}
           </UserDataContentGreetingsText>
         </UserDataContentGreetings>
         <FiLogOut
