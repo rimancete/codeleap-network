@@ -28,7 +28,8 @@ export function PostCard({ post, onClick }: PostCardProps) {
   const params = useParams();
   const username = params.username;
 
-  const [enableModal, setEnableModal] = useState(false);
+  const [isDeleteModal, setIsDeleteModal] = useState(false);
+  const [isEditModal, setIsEditModal] = useState(false);
 
   return (
     <BookCardContainer onClick={onClick}>
@@ -39,9 +40,13 @@ export function PostCard({ post, onClick }: PostCardProps) {
             <MdDeleteForever
               size={30}
               className="icon-pressable"
-              onClick={() => setEnableModal(true)}
+              onClick={() => setIsDeleteModal(true)}
             />
-            <FaRegEdit size={30} className="icon-pressable" />
+            <FaRegEdit
+              size={30}
+              className="icon-pressable"
+              onClick={() => setIsEditModal(true)}
+            />
           </BookCardHeaderIcons>
         )}
       </BookCardHeader>
@@ -59,7 +64,8 @@ export function PostCard({ post, onClick }: PostCardProps) {
           <BookCardBodyPostText>{post.content}</BookCardBodyPostText>
         </BookCardBodyPostContent>
       </BookCardBody>
-      {enableModal && <Modal type={modalTypeEnum.DELETE_POST} />}
+      {isDeleteModal && <Modal type={modalTypeEnum.DELETE_POST} post={post} />}
+      {isEditModal && <Modal type={modalTypeEnum.EDIT_POST} post={post} />}
     </BookCardContainer>
   );
 }

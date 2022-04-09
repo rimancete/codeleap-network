@@ -5,14 +5,16 @@ interface CustomButtonProps {
 }
 
 export const ButtonContent = styled.div`
-  width: 100%;
+  /* width: 100%; */
   display: flex;
   justify-content: flex-end;
   margin-top: ${({ theme }) => theme.spacings.small};
+  margin-left: ${({ theme }) => theme.spacings.small};
 `;
 
 export const CustomButton = styled.button<CustomButtonProps>`
   color: ${({ theme, isWhite }) => isWhite && theme.colors.primaryColor};
+  font-weight: 700;
   background: ${({ theme, isWhite }) => isWhite && theme.colors.white};
   border: 2px solid
     ${({ theme, isWhite }) => isWhite && theme.colors.primaryColor};

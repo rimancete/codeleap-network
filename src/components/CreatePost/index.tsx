@@ -1,19 +1,13 @@
 import { useState } from 'react';
 import { Button } from '../Button';
 import { TextInput } from '../TextInput';
-import {
-  ContentText,
-  PostContent,
-  PostContentTitle,
-  PostForm,
-  TextAreaContent,
-  TextAreaLabel,
-} from './styles';
+import { PostContent, PostContentTitle, PostForm } from './styles';
 
 import { addOrEditPost } from '../../actions/axios';
 import { useParams } from 'react-router-dom';
 import { PostDataType } from '../../interfaces';
 import { toIsoString } from '../../utils/getDateTimeIso';
+import { Textarea } from '../TextArea';
 
 export function CreatePost() {
   const [title, setTitle] = useState<string>('');
@@ -50,14 +44,11 @@ export function CreatePost() {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-        <TextAreaContent>
-          <TextAreaLabel>Content</TextAreaLabel>
-          <ContentText
-            rows={2}
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-          />
-        </TextAreaContent>
+        <Textarea
+          label="Content"
+          value={content}
+          onChange={(e) => setContent((e.target as HTMLInputElement).value)}
+        />
         <Button
           inputValue={title && content ? true : false}
           label="CREATE"

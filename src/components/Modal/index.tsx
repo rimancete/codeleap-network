@@ -1,27 +1,36 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { addOrEditPost, deletePost } from '../../actions/axios';
 import { env } from '../../environments';
+import { PostDataType } from '../../interfaces';
 import { modalTypeEnum } from '../../utils/enum';
 import { Button } from '../Button';
+import { Textarea } from '../TextArea';
 import { TextInput } from '../TextInput';
 import {
-  LoginModalContainer,
-  LoginModalBackground,
-  LoginModalContent,
-  LoginModalContentHeader,
-  LoginModalContentTitleText,
-  LoginModalContentBody,
-  LoginModalForm,
-  LoginModalContentBodyDeleteConfirm,
-  LoginModalContentBodyDeleteConfirmText,
+  ModalContainer,
+  ModalBackground,
+  ModalContent,
+  ModalContentHeader,
+  ModalContentTitleText,
+  ModalContentBody,
+  ModalForm,
+  ModalContentBodyDeleteConfirm,
+  ModalContentBodyDeleteConfirmText,
+  ModalContentBodyDeleteContent,
+  ModalFormButtonDiv,
 } from './styles';
 
 interface ModalProps {
   type: modalTypeEnum;
+  post?: PostDataType;
 }
 
-export function Modal({ type }: ModalProps) {
+export function Modal({ type, post }: ModalProps) {
   const [username, setUsername] = useState<string>('');
+  const [postTitle, setPostTitle] = useState<string>('');
+  const [postContent, setPostContent] = useState<string>('');
+
   const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -32,6 +41,37 @@ export function Modal({ type }: ModalProps) {
   const handleClose = async () => {
     document.querySelector('.modal-visible')?.classList.add('modal-hide');
   };
+  const handleEditPost = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (post) {
+      const data: PostDataType = {
+        title: post.title,
+        content: post.content,
+      };
+      addOrEditPost(data, true, post.id)
+        .then(() => {
+          handleClose();
+          window.location.reload();
+        })
+        .catch((err) => {
+          console.log('err', err);
+          handleClose();
+        });
+    }
+  };
+
+  const handleDeletePost = async () => {
+    post &&
+      deletePost(post)
+        .then(() => {
+          handleClose();
+          window.location.reload();
+        })
+        .catch((err) => {
+          console.log('err', err);
+          handleClose();
+        });
+  };
 
   useEffect(() => {
     document.querySelector('.modal-visible')?.classList.remove('modal-hide');
@@ -40,32 +80,35 @@ export function Modal({ type }: ModalProps) {
     };
   }, []);
 
+  useEffect(() => {
+    if (type !== modalTypeEnum.LOGIN && post) {
+      setPostTitle(post.title);
+      setPostContent(post.content);
+    }
+  }, [post, type]);
+
   return (
-    <LoginModalContainer>
-      <LoginModalBackground
+    <ModalContainer>
+      <ModalBackground
         onClick={() => type !== modalTypeEnum.LOGIN && handleClose()}
         className={type !== modalTypeEnum.LOGIN ? 'modal-visible' : ''}
       >
-        <LoginModalContent
+        <ModalContent
           onClick={(e) => e.stopPropagation()}
           width={window.innerWidth}
         >
-          {type === modalTypeEnum.LOGIN && (
-            <LoginModalContentHeader>
-              <LoginModalContentTitleText>
-                Welcome to CodeLeap network!
-              </LoginModalContentTitleText>
-            </LoginModalContentHeader>
-          )}
-          <LoginModalContentBody>
-            {type !== modalTypeEnum.DELETE_POST && (
-              <LoginModalForm onSubmit={handleSubmit}>
+          <ModalContentHeader>
+            <ModalContentTitleText>
+              {type === modalTypeEnum.LOGIN
+                ? 'Welcome to CodeLeap network!'
+                : type === modalTypeEnum.EDIT_POST && 'Edit item'}
+            </ModalContentTitleText>
+          </ModalContentHeader>
+          <ModalContentBody>
+            {type === modalTypeEnum.LOGIN && (
+              <ModalForm onSubmit={handleSubmit}>
                 <TextInput
-                  label={
-                    type === modalTypeEnum.LOGIN
-                      ? 'Please enter your username'
-                      : 'Title'
-                  }
+                  label="Please enter your username"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                 />
@@ -74,18 +117,55 @@ export function Modal({ type }: ModalProps) {
                   label="ENTER"
                   isWhite={false}
                 />
-              </LoginModalForm>
+              </ModalForm>
             )}
             {type === modalTypeEnum.DELETE_POST && (
-              <LoginModalContentBodyDeleteConfirm>
-                <LoginModalContentBodyDeleteConfirmText>
-                  Are you sure you want to delete this item?
-                </LoginModalContentBodyDeleteConfirmText>
-              </LoginModalContentBodyDeleteConfirm>
+              <ModalContentBodyDeleteContent>
+                <ModalContentBodyDeleteConfirm>
+                  <ModalContentBodyDeleteConfirmText>
+                    Are you sure you want to delete this item?
+                  </ModalContentBodyDeleteConfirmText>
+                </ModalContentBodyDeleteConfirm>
+                <ModalFormButtonDiv>
+                  <Button
+                    inputValue={true}
+                    label="Cancel"
+                    isWhite={true}
+                    onClick={handleClose}
+                  />
+                  <Button
+                    inputValue={true}
+                    label="OK"
+                    isWhite={true}
+                    onClick={handleDeletePost}
+                  />
+                </ModalFormButtonDiv>
+              </ModalContentBodyDeleteContent>
             )}
-          </LoginModalContentBody>
-        </LoginModalContent>
-      </LoginModalBackground>
-    </LoginModalContainer>
+            {type === modalTypeEnum.EDIT_POST && (
+              <ModalForm onSubmit={handleEditPost}>
+                <TextInput
+                  label="Title"
+                  value={postTitle}
+                  onChange={(e) => setPostTitle(e.target.value)}
+                />
+                <Textarea
+                  label="Content"
+                  value={postContent}
+                  onChange={(e) =>
+                    setPostContent((e.target as HTMLInputElement).value)
+                  }
+                />
+                <Button
+                  inputValue={postTitle && postContent ? true : false}
+                  label="SAVE"
+                  isWhite={false}
+                />
+              </ModalForm>
+            )}
+          </ModalContentBody>
+        </ModalContent>
+      </ModalBackground>
+    </ModalContainer>
   );
 }

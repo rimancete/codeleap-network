@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components';
 
-interface LoginModalContentProps {
+interface ModalContentProps {
   width: number;
 }
 
-export const LoginModalContainer = styled.div`
+export const ModalContainer = styled.div`
   z-index: 9999;
   display: flex;
   .modal-visible.modal-hide {
@@ -12,7 +12,7 @@ export const LoginModalContainer = styled.div`
   }
 `;
 
-export const LoginModalBackground = styled.div`
+export const ModalBackground = styled.div`
   width: 100vw;
   height: 100vh;
   background: ${({ theme }) => theme.colors.modalBackground};
@@ -30,7 +30,7 @@ export const LoginModalBackground = styled.div`
   }
 `;
 
-export const LoginModalContent = styled.div<LoginModalContentProps>`
+export const ModalContent = styled.div<ModalContentProps>`
   flex-direction: column;
   max-width: ${(p) => (p.width < 768 ? '' : '500px')};
   ${({ theme }) => css`
@@ -42,26 +42,29 @@ export const LoginModalContent = styled.div<LoginModalContentProps>`
     display: flex;
   `}
 `;
-export const LoginModalContentHeader = styled.div`
+export const ModalContentHeader = styled.div`
   display: flex;
   align-items: left;
   margin-bottom: ${({ theme }) => theme.spacings.small};
 `;
 
-export const LoginModalContentTitleText = styled.h1``;
+export const ModalContentTitleText = styled.h1``;
 
-export const LoginModalContentBody = styled.div`
+export const ModalContentBody = styled.div`
   display: flex;
   width: 100%;
 `;
-export const LoginModalForm = styled.form``;
+export const ModalForm = styled.form``;
 
-export const LoginModalFormButtonDiv = styled.div`
+export const ModalFormButtonDiv = styled.div`
   width: 100%;
   display: flex;
   justify-content: flex-end;
   margin-top: ${({ theme }) => theme.spacings.small};
 `;
-export const LoginModalFormConfirmButton = styled.button``;
-export const LoginModalContentBodyDeleteConfirm = styled.div``;
-export const LoginModalContentBodyDeleteConfirmText = styled.p``;
+export const ModalFormConfirmButton = styled.button``;
+export const ModalContentBodyDeleteContent = styled.div`
+  width: 100%;
+`;
+export const ModalContentBodyDeleteConfirm = styled.div``;
+export const ModalContentBodyDeleteConfirmText = styled.p``;

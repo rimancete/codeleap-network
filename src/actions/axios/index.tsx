@@ -10,11 +10,15 @@ export async function getPosts(): Promise<PostDataType[]> {
 export async function addOrEditPost(
   data: PostDataType,
   isEdit?: boolean,
-  postId?: number,
+  dataId?: number,
 ): Promise<PostDataType> {
   if (!isEdit) {
     return await axios.post(env.baseUrl, data);
   } else {
-    return await axios.patch(`${env.baseUrl}/${postId}`, data);
+    return await axios.patch(`${env.baseUrl}/${dataId}`, data);
   }
+}
+
+export async function deletePost(data: PostDataType): Promise<PostDataType> {
+  return await axios.delete(`${env.baseUrl}/${data.id}`);
 }
