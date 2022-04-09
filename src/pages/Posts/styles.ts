@@ -5,6 +5,7 @@ export const HomeContainer = styled.div`
   flex-direction: column;
   align-items: center;
   min-width: 385px;
+  width: 100%;
 `;
 export const HomeContent = styled.div`
   display: flex;
