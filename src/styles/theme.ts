@@ -22,13 +22,12 @@ export const theme = {
   media: {
     lteXSmall: '(max-width: 500px)',
     lteSmall: '(max-width: 768px)',
+    lteMinSmall: '(min-width: 768px)',
     lteMedium: '(max-width: 970px)',
     lteLarge: '(min-width: 1024px)',
-    hgtLarge: '(max-heigth: 1000px)',
-    hgtMinimun: '1000px',
   },
   spacings: {
-    xsmall: '8rem',
+    xsmall: '0.8rem',
     small: '1.6rem',
     medium: '2.4rem',
     large: '3.2rem',
