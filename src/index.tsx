@@ -12,6 +12,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { env } from './environments';
 import { Posts } from './pages/Posts';
 
+import { Toaster } from 'react-hot-toast';
+
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
@@ -25,6 +27,7 @@ ReactDOM.render(
           </Routes>
         </BrowserRouter>
       </Provider>
+      <Toaster position="top-right" />
       <GlobalStyles />
     </ThemeProvider>
   </React.StrictMode>,

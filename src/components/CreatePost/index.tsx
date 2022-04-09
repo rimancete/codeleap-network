@@ -9,6 +9,9 @@ import { PostDataType } from '../../interfaces';
 import { toIsoString } from '../../utils/getDateTimeIso';
 import { Textarea } from '../TextArea';
 
+import toast from 'react-hot-toast';
+import { timer } from '../../lib/toast';
+
 export function CreatePost() {
   const [title, setTitle] = useState<string>('');
   const [content, setContent] = useState<string>('');
@@ -27,8 +30,10 @@ export function CreatePost() {
 
     addOrEditPost(data)
       .then(() => {
-        // show successfull post creation message
-        window.location.reload();
+        toast.success(`Post create successfully`, {
+          duration: timer().success,
+        });
+        setTimeout(() => window.location.reload(), timer().success);
       })
       .catch(() => {
         // show fail to create post message

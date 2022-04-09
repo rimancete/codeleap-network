@@ -21,6 +21,8 @@ import {
   ModalFormButtonDiv,
 } from './styles';
 
+import toast from 'react-hot-toast';
+import { timer } from '../../lib/toast';
 interface ModalProps {
   type: modalTypeEnum;
   post?: PostDataType;
@@ -35,12 +37,19 @@ export function Modal({ type, post }: ModalProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    navigate(`${env.ROUTER_UTILS.base.posts}/${username}`);
+    toast.success(`Login successfully`, {
+      duration: timer().success,
+    });
+    setTimeout(
+      () => navigate(`${env.ROUTER_UTILS.base.posts}/${username}`),
+      timer().success,
+    );
   };
 
   const handleClose = async () => {
     document.querySelector('.modal-visible')?.classList.add('modal-hide');
   };
+
   const handleEditPost = async (e: React.FormEvent) => {
     e.preventDefault();
     if (post) {
@@ -51,11 +60,16 @@ export function Modal({ type, post }: ModalProps) {
       addOrEditPost(data, true, post.id)
         .then(() => {
           handleClose();
-          window.location.reload();
+          toast.success(`Post successfully updated`, {
+            duration: timer().success,
+          });
+          setTimeout(() => window.location.reload(), timer().success);
         })
-        .catch((err) => {
-          console.log('err', err);
-          handleClose();
+        .catch(() => {
+          toast.error(`Update Post failed`, {
+            duration: timer().error,
+          });
+          setTimeout(() => window.location.reload(), timer().error);
         });
     }
   };
@@ -65,11 +79,16 @@ export function Modal({ type, post }: ModalProps) {
       deletePost(post)
         .then(() => {
           handleClose();
-          window.location.reload();
+          toast.success(`Post successfully deleted`, {
+            duration: timer().success,
+          });
+          setTimeout(() => window.location.reload(), timer().success);
         })
-        .catch((err) => {
-          console.log('err', err);
-          handleClose();
+        .catch(() => {
+          toast.error(`Delete Post failed`, {
+            duration: timer().error,
+          });
+          setTimeout(() => window.location.reload(), timer().error);
         });
   };
 

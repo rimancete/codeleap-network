@@ -15,7 +15,7 @@ export async function addOrEditPost(
   if (!isEdit) {
     return await axios.post(env.baseUrl, data);
   } else {
-    return await axios.patch(`${env.baseUrl}/${dataId}`, data);
+    return await axios.patch(`${env.baseUrl}${dataId}`, data);
   }
 }
 
