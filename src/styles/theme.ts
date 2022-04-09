@@ -20,7 +20,9 @@ export const theme = {
     },
   },
   media: {
-    lteMedium: '(max-width: 1024px)',
+    lteXSmall: '(max-width: 500px)',
+    lteSmall: '(max-width: 768px)',
+    lteMedium: '(max-width: 970px)',
     lteLarge: '(min-width: 1024px)',
     hgtLarge: '(max-heigth: 1000px)',
     hgtMinimun: '1000px',

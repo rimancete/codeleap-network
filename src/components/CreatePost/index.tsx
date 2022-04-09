@@ -36,12 +36,14 @@ export function CreatePost() {
         setTimeout(() => window.location.reload(), timer().success);
       })
       .catch(() => {
-        // show fail to create post message
+        toast.error(`Post create failed`, {
+          duration: timer().success,
+        });
       });
   };
 
   return (
-    <PostContent width={window.innerWidth}>
+    <PostContent>
       <PostContentTitle>What{"'"}s on your mind?</PostContentTitle>
       <PostForm onSubmit={handleSubmit}>
         <TextInput

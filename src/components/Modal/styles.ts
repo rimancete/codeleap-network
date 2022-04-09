@@ -1,9 +1,5 @@
 import styled, { css } from 'styled-components';
 
-interface ModalContentProps {
-  width: number;
-}
-
 export const ModalContainer = styled.div`
   z-index: 9999;
   display: flex;
@@ -30,9 +26,11 @@ export const ModalBackground = styled.div`
   }
 `;
 
-export const ModalContent = styled.div<ModalContentProps>`
+export const ModalContent = styled.div`
   flex-direction: column;
-  max-width: ${(p) => (p.width < 768 ? '' : '500px')};
+  @media ${({ theme }) => theme.media.lteMinSmall} {
+    max-width: 500px;
+  }
   ${({ theme }) => css`
     background: ${theme.colors.white};
     width: 85%;

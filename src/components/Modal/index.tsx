@@ -112,10 +112,7 @@ export function Modal({ type, post }: ModalProps) {
         onClick={() => type !== modalTypeEnum.LOGIN && handleClose()}
         className={type !== modalTypeEnum.LOGIN ? 'modal-visible' : ''}
       >
-        <ModalContent
-          onClick={(e) => e.stopPropagation()}
-          width={window.innerWidth}
-        >
+        <ModalContent onClick={(e) => e.stopPropagation()}>
           <ModalContentHeader>
             <ModalContentTitleText>
               {type === modalTypeEnum.LOGIN
