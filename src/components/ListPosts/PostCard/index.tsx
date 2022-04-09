@@ -18,7 +18,7 @@ import { FaRegEdit } from 'react-icons/fa';
 import { useState } from 'react';
 import { Modal } from '../../Modal';
 import { modalTypeEnum } from '../../../utils/enum';
-import { serializeText } from '../../../service/serialize-string';
+import { serializeText } from '../../../utils/serializeString';
 
 export type PostCardProps = {
   post: PostDataType;
