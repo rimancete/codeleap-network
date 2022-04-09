@@ -65,6 +65,7 @@ export const GlobalStyles = createGlobalStyle<Theme>`
       }
   }
   textarea {
+      font-family: ${({ theme }) => theme.font.family.default};
       border: 2px solid ${({ theme }) => theme.colors.primaryColor};
       resize: none;
       font-size: ${({ theme }) => theme.font.sizes.large};
