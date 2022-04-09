@@ -110,4 +110,19 @@ export const GlobalStyles = createGlobalStyle<Theme>`
   /* .icon-pressable:hover {
     transform: scale(1.4);
   } */
+
+  .page-selector {
+    cursor: pointer;
+    color: ${({ theme }) => theme.colors.primaryColor};
+    text-decoration: none;
+    border-color: transparent;
+  }
+
+  .page-selector--disabled {
+    color: ${({ theme }) => theme.colors.secondaryColor};
+    /* border-radius: 50%; */
+    /* border: 2px solid ${({ theme }) => theme.colors.lightGray}; */
+    cursor: not-allowed;
+  }
+
 `;

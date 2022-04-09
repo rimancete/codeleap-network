@@ -1,21 +1,19 @@
 import { PostsContainer } from './styles';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { useAppSelector } from '../../redux/hooks';
 import { store } from '../../redux/store';
-import { useState } from 'react';
-import { loadPosts } from '../../redux/reducers';
 import { PostCard } from './PostCard';
+import { PostDataType } from '../../interfaces';
 
-export function ListPosts() {
+interface ListPostsProps {
+  posts: PostDataType[];
+}
+
+export function ListPosts({ posts }: ListPostsProps) {
   const state = useAppSelector(store.getState);
-  const dispatch = useAppDispatch();
-
-  useState(() => {
-    dispatch(loadPosts());
-  });
 
   return (
     <PostsContainer>
-      {state.posts.value.map((post, index) => (
+      {posts.map((post, index) => (
         <PostCard key={index} post={post} />
       ))}
     </PostsContainer>

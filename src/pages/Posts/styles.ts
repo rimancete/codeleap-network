@@ -8,3 +8,10 @@ export const HomeContent = styled.div`
   align-items: center;
   padding: 0 ${({ theme }) => theme.spacings.medium};
 `;
+export const HomeContainerPageSelectorContent = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  max-width: 723px;
+`;

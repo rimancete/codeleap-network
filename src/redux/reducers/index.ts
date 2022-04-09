@@ -21,10 +21,12 @@ export const postSlice = createSlice({
 
 export const { load } = postSlice.actions;
 
-export const loadPosts = (): AppThunk => async (dispatch: AppDispatch) => {
-  const posts = await getPosts();
-  dispatch(load(posts));
-};
+export const loadPosts =
+  (page: number): AppThunk =>
+  async (dispatch: AppDispatch) => {
+    const posts = await getPosts(page);
+    dispatch(load(posts));
+  };
 export const selectPost = (state: StateType) => state.value;
 
 export default postSlice.reducer;
