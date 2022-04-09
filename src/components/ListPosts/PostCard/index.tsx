@@ -2,22 +2,23 @@ import { useParams } from 'react-router-dom';
 import { PostDataType } from '../../../interfaces';
 import { getTimeDiff } from '../../../utils/getTimeDiff';
 import {
-  BookCardBody,
-  BookCardBodyHeader,
-  BookCardBodyHeaderPostedTime,
-  BookCardBodyHeaderUsername,
-  BookCardBodyPostContent,
-  BookCardBodyPostText,
-  BookCardContainer,
-  BookCardHeader,
-  BookCardHeaderIcons,
-  BookCardHeaderTitle,
+  PostCardBody,
+  PostCardBodyHeader,
+  PostCardBodyHeaderPostedTime,
+  PostCardBodyHeaderUsername,
+  PostCardBodyPostContent,
+  PostCardBodyPostText,
+  PostCardContainer,
+  PostCardHeader,
+  PostCardHeaderIcons,
+  PostCardHeaderTitle,
 } from './styles';
 import { MdDeleteForever } from 'react-icons/md';
 import { FaRegEdit } from 'react-icons/fa';
 import { useState } from 'react';
 import { Modal } from '../../Modal';
 import { modalTypeEnum } from '../../../utils/enum';
+import { serializeText } from '../../../service/serialize-string';
 
 export type PostCardProps = {
   post: PostDataType;
@@ -32,11 +33,13 @@ export function PostCard({ post, onClick }: PostCardProps) {
   const [isEditModal, setIsEditModal] = useState(false);
 
   return (
-    <BookCardContainer onClick={onClick}>
-      <BookCardHeader>
-        <BookCardHeaderTitle>{post.title}</BookCardHeaderTitle>
+    <PostCardContainer onClick={onClick}>
+      <PostCardHeader>
+        <PostCardHeaderTitle>
+          {serializeText(post.title, window.innerWidth)}
+        </PostCardHeaderTitle>
         {username === post.username && (
-          <BookCardHeaderIcons>
+          <PostCardHeaderIcons>
             <MdDeleteForever
               size={30}
               className="icon-pressable"
@@ -47,25 +50,25 @@ export function PostCard({ post, onClick }: PostCardProps) {
               className="icon-pressable"
               onClick={() => setIsEditModal(true)}
             />
-          </BookCardHeaderIcons>
+          </PostCardHeaderIcons>
         )}
-      </BookCardHeader>
-      <BookCardBody>
-        <BookCardBodyHeader>
-          <BookCardBodyHeaderUsername>
+      </PostCardHeader>
+      <PostCardBody>
+        <PostCardBodyHeader>
+          <PostCardBodyHeaderUsername>
             {'@'}
-            {post.username}
-          </BookCardBodyHeaderUsername>
-          <BookCardBodyHeaderPostedTime>
+            {serializeText(post.username, window.innerWidth)}
+          </PostCardBodyHeaderUsername>
+          <PostCardBodyHeaderPostedTime>
             {getTimeDiff(new Date(), new Date(`${post.created_datetime}`))}
-          </BookCardBodyHeaderPostedTime>
-        </BookCardBodyHeader>
-        <BookCardBodyPostContent>
-          <BookCardBodyPostText>{post.content}</BookCardBodyPostText>
-        </BookCardBodyPostContent>
-      </BookCardBody>
+          </PostCardBodyHeaderPostedTime>
+        </PostCardBodyHeader>
+        <PostCardBodyPostContent>
+          <PostCardBodyPostText>{post.content}</PostCardBodyPostText>
+        </PostCardBodyPostContent>
+      </PostCardBody>
       {isDeleteModal && <Modal type={modalTypeEnum.DELETE_POST} post={post} />}
       {isEditModal && <Modal type={modalTypeEnum.EDIT_POST} post={post} />}
-    </BookCardContainer>
+    </PostCardContainer>
   );
 }
