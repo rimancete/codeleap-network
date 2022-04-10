@@ -122,6 +122,7 @@ export function Modal({ type, post }: ModalProps) {
                   label="Please enter your username"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
+                  autoCapitalize="none"
                 />
                 <Button
                   inputValue={username ? true : false}
