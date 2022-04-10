@@ -10,7 +10,13 @@ export function TextInput({ label, value, onChange, ...rest }: TextInputProps) {
   return (
     <TextInputContent>
       <TextInputLabel>{label}</TextInputLabel>
-      <Input type="text" value={value} onChange={onChange} {...rest} />
+      <Input
+        type="text"
+        value={value}
+        onChange={onChange}
+        autoCapitalize="none"
+        {...rest}
+      />
     </TextInputContent>
   );
 }

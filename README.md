@@ -49,6 +49,7 @@ Layout
 
 Funcionalidade
 - Após feedback, inabilitar campos e botões
+- Filtros: Listar somente os posts do usuário ou todos
 
 Bug
 - Em alguns momentos após fechar o modal e tentar acioná-lo por alguma opção, ele não reabre. Necessitando atualizar a página para que volte ao normal

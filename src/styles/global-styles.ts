@@ -31,17 +31,17 @@ export const GlobalStyles = createGlobalStyle<Theme>`
   p {
     margin: ${({ theme }) => theme.spacings.medium} 0 ${({ theme }) =>
   theme.spacings.small} 0;
-    font-size: 1.125em;
+    font-size: ${({ theme }) => theme.font.sizes.medium};
     color: ${({ theme }) => theme.colors.primaryColor};
   }
 
   button {
-    width: 111px;
+    /* width: 111px; */
     color: ${({ theme }) => theme.colors.white};
     cursor: pointer;
     background: ${({ theme }) => theme.colors.primaryColor};
     border: 2px solid ${({ theme }) => theme.colors.primaryColor};
-    padding: 5px 20px;
+    padding: 5px 28px;
     font-size: ${({ theme }) => theme.font.sizes.small};
     transition: all, 0.3s;
   }
@@ -84,11 +84,7 @@ export const GlobalStyles = createGlobalStyle<Theme>`
     color: ${({ theme }) => theme.colors.white};
     text-decoration: none;
     border-color: transparent;
-    /* transition: all, 0.3s; */
-  /* }
-  .icon-pressable:hover {
-    transform: scale(1.4);
-  } */
+   }
 
   .page-selector {
     cursor: pointer;
@@ -100,6 +96,32 @@ export const GlobalStyles = createGlobalStyle<Theme>`
   .page-selector--disabled {
     color: ${({ theme }) => theme.colors.secondaryColor};
     cursor: not-allowed;
+  }
+
+  // media
+  @media ${({ theme }) => theme.media.lteMedium} {
+    p {
+      font-size: ${({ theme }) => theme.font.sizes.small};
+    }
+    h1 {
+      font-size: ${({ theme }) => theme.font.sizes.medium};
+    }
+    button {
+      font-size: ${({ theme }) => theme.font.sizes.xsmall};
+      padding: 5px 25px;
+    }
+  }
+  @media ${({ theme }) => theme.media.lteSmall} {
+    p {
+      font-size: ${({ theme }) => theme.font.sizes.xxsmall};
+    }
+    h1 {
+      font-size: ${({ theme }) => theme.font.sizes.small};
+    }
+    button {
+      font-size: ${({ theme }) => theme.font.sizes.xxsmall};
+      padding: 5px 23px;
+    }
   }
 
 `;

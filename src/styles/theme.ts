@@ -13,6 +13,7 @@ export const theme = {
       default: "'Roboto', sans-serif",
     },
     sizes: {
+      xxsmall: '0.75em', // 12px
       xsmall: '0.875em', // 14px
       small: '1em', // 16px
       medium: '1.125em', // 18px
