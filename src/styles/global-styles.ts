@@ -36,7 +36,6 @@ export const GlobalStyles = createGlobalStyle<Theme>`
   }
 
   button {
-    /* width: 111px; */
     color: ${({ theme }) => theme.colors.white};
     cursor: pointer;
     background: ${({ theme }) => theme.colors.primaryColor};
